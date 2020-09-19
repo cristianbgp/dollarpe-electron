@@ -1,0 +1,73 @@
+{
+  "name": "electron-dollarpe",
+  "productName": "dollarpe",
+  "version": "1.0.0",
+  "description": "An electron menubar app that shows dollar to peruvian sol exchange rate",
+  "main": "./app/main.js",
+  "scripts": {
+    "build": "concurrently \"yarn build:main\" \"yarn build:renderer\"",
+    "build:main": "webpack --config ./config/webpack.config.main.js",
+    "build:renderer": "webpack --config ./config/webpack.config.renderer.prod.js",
+    "start": "concurrently \"yarn start:renderer\" \"yarn start:main\"",
+    "start:main": "nodemon --exec \"yarn build:main && electron .\"",
+    "start:renderer": "webpack-dev-server --color --config ./config/webpack.config.renderer.dev.js",
+    "postinstall": "electron-builder install-app-deps package.json",
+    "lint": "eslint --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cristianbgp/electron-dollarpe.git"
+  },
+  "keywords": [
+    "electron",
+    "dollarpe",
+    "app",
+    "menubar"
+  ],
+  "author": {
+    "name": "Cristian Granda",
+    "email": "cristian.granda.pastor@gmail.com",
+    "url": "https://cristianbgp.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-is": "^3.0.0",
+    "menubar": "^5.2.3",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.4.8",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "concurrently": "^4.1.0",
+    "css-loader": "^2.1.0",
+    "electron": "^4.0.5",
+    "electron-builder": "^20.38.5",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.10",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^2.1.2",
+    "rimraf": "^2.6.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.0",
+    "webpack-merge": "^4.2.1"
+  }
+}

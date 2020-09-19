@@ -1,0 +1,28 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row .name-container {
+  flex: 1;
+}
+
+.row .name-container .name {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.flex-1 {
+  display: flex;
+  flex: 1;
+}
+
+.left-20 {
+  margin-left: 20px;
+}
+
+.title {
+  font-weight: bold;
+  margin-top: 15;
+  margin-bottom: 5;
+}

@@ -117,4 +117,6 @@ app/dist
 app/main.js
 app/main.js.map
 
+build/
+
 # End of https://www.gitignore.io/api/node,macos

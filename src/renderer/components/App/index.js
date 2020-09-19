@@ -4,6 +4,8 @@ import "./index.css";
 import constants from "../../../constants";
 import PopOver from "../PopOver";
 import Row from "../Row";
+import useSWR from "swr";
+import Spinner from "../Spinner";
 
 const contentStyle = {
   borderTopLeftRadius: is.macOS() ? constants.macWinBorderRadius : 0,
@@ -12,11 +14,48 @@ const contentStyle = {
   borderBottomRightRadius: is.macOS() ? 0 : constants.nonMacWinBorderRadius,
 };
 
-const dollarpe = {
-  tkambio: { buy: 3.518, sell: 3.54 },
-  rextie: { buy: 3.514, sell: 3.547 },
-  kambista: { buy: 3.514, sell: 3.555 },
-};
+function fetcher(url) {
+  return fetch(url).then((res) => {
+    return res.json();
+  });
+}
+
+function Tab() {
+  const { data, error } = useSWR(
+    "https://dollarpe-site.vercel.app/api",
+    fetcher
+  );
+
+  if (error) {
+    return (
+      <div className="centered-block">
+        <p>Something went wrong</p>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="centered-block">
+        <Spinner />
+      </div>
+    );
+  }
+
+  const dollarpe = data.reduce((acc, element) => {
+    acc[element[0]] = element[1];
+    return acc;
+  }, {});
+
+  return (
+    <>
+      <Row titles />
+      {Object.entries(dollarpe).map(([key, { buy, sell }]) => (
+        <Row key={key} name={key} buy={buy} sell={sell} />
+      ))}
+    </>
+  );
+}
 
 function App() {
   return (
@@ -30,10 +69,7 @@ function App() {
       <div className="content" style={contentStyle}>
         <div className="tab-pages">
           <div className="tab1-panel-container">
-            <Row titles />
-            {Object.entries(dollarpe).map(([key, { buy, sell }]) => (
-              <Row key={key} name={key} buy={buy} sell={sell} />
-            ))}
+            <Tab />
           </div>
         </div>
       </div>

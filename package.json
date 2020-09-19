@@ -12,7 +12,19 @@
     "start:main": "nodemon --exec \"yarn build:main && electron .\"",
     "start:renderer": "webpack-dev-server --color --config ./config/webpack.config.renderer.dev.js",
     "postinstall": "electron-builder install-app-deps package.json",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.cristianbgp.dollarpe",
+    "productName": "dollarpe",
+    "directories": {
+      "output": "build"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "app/icon.png"
+    }
   },
   "repository": {
     "type": "git",
@@ -34,7 +46,8 @@
     "electron-is": "^3.0.0",
     "menubar": "^5.2.3",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-dom": "^16.8.2",
+    "swr": "^0.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -47,7 +60,7 @@
     "concurrently": "^4.1.0",
     "css-loader": "^2.1.0",
     "electron": "^4.0.5",
-    "electron-builder": "^20.38.5",
+    "electron-builder": "^22.8.1",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.16.0",

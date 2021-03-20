@@ -21,7 +21,7 @@ function fetcher(url) {
 }
 
 function Tab() {
-  const { data, error } = useSWR(
+  const { data, error, isValidating } = useSWR(
     "https://dollarpe-site.vercel.app/api",
     fetcher
   );
@@ -49,7 +49,7 @@ function Tab() {
 
   return (
     <>
-      <Row titles />
+      <Row titles isValidating={isValidating} />
       {Object.entries(dollarpe).map(([key, { buy, sell }]) => (
         <Row key={key} name={key} buy={buy} sell={sell} />
       ))}

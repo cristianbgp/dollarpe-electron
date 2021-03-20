@@ -1,7 +1,7 @@
 {
   "name": "electron-dollarpe",
   "productName": "dollarpe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An electron menubar app that shows dollar to peruvian sol exchange rate",
   "main": "./app/main.js",
   "scripts": {

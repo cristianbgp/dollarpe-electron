@@ -4,6 +4,12 @@ div.spinner {
   height: 54px;
 }
 
+div.spinner.mini {
+  position: relative;
+  width: 28px;
+  height: 28px;
+}
+
 div.spinner div {
   width: 6%;
   height: 16%;

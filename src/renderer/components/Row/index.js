@@ -1,11 +1,17 @@
 import React from "react";
+import Spinner from "../Spinner";
 import "./index.css";
 
-function Row({ name, buy, sell, titles = false }) {
+function Row({ name, buy, sell, titles = false, isValidating }) {
   return (
     <div className="row">
       <div className="name-container">
         <p className="name">{name}</p>
+        {titles && isValidating && (
+          <div className="spinnerContainer">
+            <Spinner mini />
+          </div>
+        )}
       </div>
       {titles ? (
         <div className="flex-1">

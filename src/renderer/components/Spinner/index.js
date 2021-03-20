@@ -1,9 +1,9 @@
 import React from "react";
 import "./index.css";
 
-function Spinner() {
+function Spinner({ mini = false }) {
   return (
-    <div className="spinner">
+    <div className={mini ? "spinner mini" : "spinner"}>
       <div className="bar1"></div>
       <div className="bar2"></div>
       <div className="bar3"></div>

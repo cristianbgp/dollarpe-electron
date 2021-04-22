@@ -18,7 +18,7 @@ app.on("ready", () => {
     icon: path.resolve(__dirname, "IconTemplate.png"),
     tooltip: "dollarpe",
     width: 350,
-    height: 200,
+    height: 240,
     fullscreenable: false,
     resizable: false,
     transparent: true,
